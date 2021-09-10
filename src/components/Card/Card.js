@@ -15,6 +15,9 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import "./_card.scss";
+import { connect } from "react-redux";
+import { handleLikeClick } from "../../store/actions";
 
 const useStyles = makeStyles((theme) => ({
   /*   root: {
@@ -39,18 +42,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RecipeReviewCard({
+const RecipeReviewCard = ({
+  pictureList,
+  handleLikeClick,
   date,
   author,
   description,
   image,
   title,
-}) {
+  cur,
+}) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const onLikeClick = (currentCard, oldList) => {
+    handleLikeClick(currentCard, oldList);
   };
 
   return (
@@ -63,22 +73,18 @@ export default function RecipeReviewCard({
         subheader={date}
       />
       <CardMedia className={classes.media} image={image} title={title} />
-      <CardContent>
-        {/* <Typography variant="body2" color="textSecondary" component="p">
-          {description}
-        </Typography> */}
-      </CardContent>
+      <CardContent></CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <FavoriteIcon
+            onClick={() => onLikeClick(cur, pictureList)}
+            style={{ color: `${cur.liked ? "red" : "black"}` }}
+          />
         </IconButton>
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
         <IconButton
-          /* className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })} */
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
@@ -96,4 +102,12 @@ export default function RecipeReviewCard({
       </Collapse>
     </Card>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return {
+    pictureList: state.pictureList,
+  };
+};
+
+export default connect(mapStateToProps, { handleLikeClick })(RecipeReviewCard);

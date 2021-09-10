@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./_picturelist.scss";
 import Card from "../Card/Card";
+import { connect } from "react-redux";
+import { fetchPictures } from "../../store/actions";
 
-const PictureList = () => {
-  const [allPictures, setAllPictures] = useState([]);
-
-  const renderedPictures = allPictures.map((cur) => {
+const PictureList = ({ pictureList, fetchPictures }) => {
+  const renderedPictures = pictureList.map((cur) => {
     return (
       <li className="card">
         <Card
@@ -15,22 +15,13 @@ const PictureList = () => {
           description={cur.explanation}
           image={cur.url}
           title={cur.title}
+          cur={cur}
         />
       </li>
     );
   });
 
   useEffect(() => {
-    const fetchPictures = async () => {
-      const res = await fetch(
-        "https://api.nasa.gov/planetary/apod?api_key=twjJbHAQRzxN7Tug2CDcROEh4JgBNPTQMkpRTlQ8&start_date=2020-01-03&end_date=2020-01-13"
-      );
-      const json = await res.json();
-      console.log(json);
-
-      setAllPictures(json);
-    };
-
     fetchPictures();
   }, []);
 
@@ -41,4 +32,12 @@ const PictureList = () => {
   );
 };
 
-export default PictureList;
+const mapStateToProps = (state) => {
+  return {
+    pictureList: state.pictureList,
+  };
+};
+
+export default connect(mapStateToProps, {
+  fetchPictures,
+})(PictureList);
