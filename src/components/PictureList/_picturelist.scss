@@ -1,7 +1,3 @@
-/* * {
-  border: 1px solid gray;
-} */
-
 .list-container {
   display: flex;
   justify-content: center;
@@ -9,13 +5,39 @@
 }
 
 .card-container {
-  display: flex !important;
-  justify-content: center !important;
+  display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 50%;
+  width: 60%;
 }
 
 .card-container > * {
   margin: 1%;
+}
+
+.card {
+  list-style-type: none;
+}
+
+// queries
+
+@media (max-width: 800px) {
+  .card-container {
+    width: 100%;
+  }
+
+  .MuiCardContent-root {
+    padding: unset !important;
+  }
+
+  .card-container > * {
+    margin: 4% 0%;
+  }
+
+  .MuiTypography-body1 {
+    font-size: 0.9rem !important;
+    text-align: center !important;
+    margin: 5% !important;
+  }
 }

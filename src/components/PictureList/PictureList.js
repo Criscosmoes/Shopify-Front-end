@@ -7,14 +7,16 @@ const PictureList = () => {
 
   const renderedPictures = allPictures.map((cur) => {
     return (
-      <Card
-        key={cur.date}
-        date={cur.date}
-        author={cur.copyright}
-        description={cur.explanation}
-        image={cur.url}
-        title={cur.title}
-      />
+      <li className="card">
+        <Card
+          key={cur.date}
+          date={cur.date}
+          author={cur.copyright}
+          description={cur.explanation}
+          image={cur.url}
+          title={cur.title}
+        />
+      </li>
     );
   });
 
