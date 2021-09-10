@@ -1,0 +1,39 @@
+* {
+  /* border: 1px solid gray; */
+}
+
+.MuiAppBar-colorPrimary {
+  color: black !important;
+}
+
+.MuiToolbar-regular {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MuiGrid-container {
+  width: unset !important;
+}
+
+.toolbar-container {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MuiToolbar-root {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 600px) and (orientation: landscape) {
+  .MuiToolbar-regular {
+    min-height: 48px;
+    display: flex;
+    justify-content: center;
+  }
+}

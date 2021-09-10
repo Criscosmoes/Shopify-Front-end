@@ -1,0 +1,21 @@
+/* * {
+  border: 1px solid gray;
+} */
+
+.list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+}
+
+.card-container > * {
+  margin: 1%;
+}
