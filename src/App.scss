@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap");
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
 v2.0 | 20110126
 License: none (public domain)
@@ -135,6 +137,7 @@ a {
 }
 * {
   box-sizing: border-box;
+  font-family: "Cabin", sans-serif !important;
 }
 /* html {
   font-size: 62.5%;

@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
+  title: {
+    fontSize: "1.2rem",
+  },
 }));
 
 const RecipeReviewCard = ({
@@ -54,6 +57,8 @@ const RecipeReviewCard = ({
 }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const event = new Date(date);
+  console.log(event.toDateString());
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -67,10 +72,12 @@ const RecipeReviewCard = ({
     <Card className="card">
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe">{author ? author.charAt(0) : "?"}</Avatar>
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            {author ? author.charAt(0) : "?"}
+          </Avatar>
         }
-        title={title}
-        subheader={date}
+        title={<h2 className={classes.title}>{title}</h2>}
+        subheader={event.toDateString()}
       />
       <CardMedia className={classes.media} image={image} title={title} />
       <CardContent></CardContent>
@@ -95,7 +102,8 @@ const RecipeReviewCard = ({
       <Collapse in={expanded} /* timeout="auto" */ /* unmountOnExit */>
         <CardContent>
           <Typography paragraph>
-            {description} " "<br></br>
+            {description}
+            <br></br>
             Author: {author ? author : "unknown"}
           </Typography>
         </CardContent>

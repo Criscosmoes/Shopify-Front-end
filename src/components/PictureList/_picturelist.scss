@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Cabin", sans-serif;
 }
 
 .card-container {
@@ -9,7 +10,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 60%;
+  width: 55%;
 }
 
 .card-container > * {
@@ -26,6 +27,37 @@
 
 .MuiCardContent-root {
   padding: unset !important;
+}
+
+// animations
+
+$total-items: 11;
+
+li {
+  animation: fadeIn 0.5s linear;
+  animation-fill-mode: both;
+}
+
+// Set delay per List Item
+@for $i from 1 through $total-items {
+  li:nth-child(#{$i}) {
+    animation-delay: 0.4s * $i;
+  }
+}
+
+// Keyframe animation
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    top: 100px;
+  }
+  75% {
+    opacity: 0.5;
+    top: 0px;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 // queries
