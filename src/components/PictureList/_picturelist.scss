@@ -1,6 +1,6 @@
 .list-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   font-family: "Cabin", sans-serif;
 }
@@ -19,6 +19,12 @@
 
 .card {
   list-style-type: none;
+}
+
+.MuiAlert-filledSuccess {
+  position: relative !important;
+  top: 0% !important;
+  right: 10% !important;
 }
 
 .MuiTypography-body1 {
@@ -86,3 +92,7 @@ li {
     height: 320px !important;
   }
 }
+
+/* * {
+  border: 2px solid gray;
+} */

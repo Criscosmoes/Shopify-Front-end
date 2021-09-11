@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
+
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -12,12 +12,15 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import "./_card.scss";
 import { connect } from "react-redux";
 import { handleLikeClick } from "../../store/actions";
+import FileCopyIcon from "@material-ui/icons/FileCopy";
+import SnackBar from "../SnackBar/SnackBar";
+
+import "./_card.scss";
+
+// snack bar
 
 const useStyles = makeStyles((theme) => ({
   /*   root: {
@@ -68,11 +71,15 @@ const RecipeReviewCard = ({
     handleLikeClick(currentCard, oldList);
   };
 
+  /* onClick={() => {
+    navigator.clipboard.writeText(cur.url);
+  }} */
+
   return (
     <Card className="card">
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
+          <Avatar aria-label="avatar" className={classes.avatar}>
             {author ? author.charAt(0) : "?"}
           </Avatar>
         }
@@ -82,19 +89,22 @@ const RecipeReviewCard = ({
       <CardMedia className={classes.media} image={image} title={title} />
       <CardContent></CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="add to favorites" title="like">
           <FavoriteIcon
             onClick={() => onLikeClick(cur, pictureList)}
-            style={{ color: `${cur.liked ? "red" : "rgba(0, 0, 0, 0.54)"}` }}
+            style={{
+              color: `${cur.liked ? "red" : "rgba(0, 0, 0, 0.54)"}`,
+            }}
           />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
+        <IconButton aria-label="copy" title="copy">
+          <SnackBar currentCard={cur} />
         </IconButton>
         <IconButton
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
+          title="description"
         >
           <ExpandMoreIcon />
         </IconButton>
