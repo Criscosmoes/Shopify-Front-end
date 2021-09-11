@@ -24,6 +24,10 @@
   margin: 1% !important;
 }
 
+.MuiCardContent-root {
+  padding: unset !important;
+}
+
 // queries
 
 @media (max-width: 800px) {
@@ -44,5 +48,9 @@
     font-size: 0.9rem !important;
     text-align: center !important;
     margin: 5% !important;
+  }
+
+  .makeStyles-media-8 {
+    height: 320px !important;
   }
 }
