@@ -138,10 +138,9 @@ a {
 * {
   box-sizing: border-box;
   font-family: "Cabin", sans-serif !important;
+  /* border: 1px solid gray; */
 }
-/* html {
-  font-size: 62.5%;
-} */
+
 body {
   font-size: 1.6rem;
 }
@@ -150,4 +149,8 @@ body {
 
 .main-container {
   background: #fafafa;
+}
+
+.SnackbarItem-wrappedRoot-61 {
+  z-index: 10000 !important;
 }

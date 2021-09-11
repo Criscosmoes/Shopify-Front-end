@@ -8,6 +8,7 @@ import { alpha, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import DatePicker from "../DatePicker/DatePicker";
+import Drawer from "../Drawer/Drawer";
 import "./_navbar.scss";
 
 const useStyles = makeStyles((theme) => ({
@@ -71,8 +72,16 @@ export default function SearchAppBar() {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar className="toolbar-container">
-          <Typography className={classes.title} variant="h5">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="open drawer"
+          >
+            <Drawer />
+          </IconButton>
+          <Typography className={classes.title} variant="h6" noWrap>
             SpaceStagram
           </Typography>
           <DatePicker />

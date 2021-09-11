@@ -30,6 +30,14 @@
   overflow: unset !important;
 }
 
+.MuiGrid-container {
+  width: unset !important;
+}
+
+.MuiAppBar-colorPrimary {
+  background: white !important;
+}
+
 @media (max-width: 600px) and (orientation: landscape) {
   .MuiToolbar-regular {
     min-height: 48px;
@@ -42,5 +50,17 @@
   .MuiPickersCalendarHeader-transitionContainer {
     overflow: unset !important;
     height: 38px !important;
+  }
+
+  .MuiGrid-container {
+    width: 100% !important;
+  }
+
+  .makeStyles-title-3 {
+    display: none !important;
+  }
+
+  .makeStyles-title-15 {
+    display: none !important;
   }
 }
