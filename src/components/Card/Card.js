@@ -78,7 +78,7 @@ const RecipeReviewCard = ({
         <IconButton aria-label="add to favorites">
           <FavoriteIcon
             onClick={() => onLikeClick(cur, pictureList)}
-            style={{ color: `${cur.liked ? "red" : "black"}` }}
+            style={{ color: `${cur.liked ? "red" : "rgba(0, 0, 0, 0.54)"}` }}
           />
         </IconButton>
         <IconButton aria-label="share">

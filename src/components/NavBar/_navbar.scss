@@ -26,10 +26,21 @@
   align-items: center;
 }
 
+.MuiPickersCalendarHeader-transitionContainer {
+  overflow: unset !important;
+}
+
 @media (max-width: 600px) and (orientation: landscape) {
   .MuiToolbar-regular {
     min-height: 48px;
     display: flex;
     justify-content: center;
+  }
+}
+
+@media (max-width: 800px) {
+  .MuiPickersCalendarHeader-transitionContainer {
+    overflow: unset !important;
+    height: 38px !important;
   }
 }
