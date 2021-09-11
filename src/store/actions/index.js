@@ -1,4 +1,10 @@
 export const fetchPictures = () => async (dispatch) => {
+  // enter loading state
+  dispatch({
+    type: "IS_LOADING",
+    payload: "false",
+  });
+
   // check if today's pictures are in local storage, if they are, no need to make AJAX request (CACHE?)
 
   const pictureArray = JSON.parse(localStorage.getItem("pictureList"));
@@ -7,6 +13,11 @@ export const fetchPictures = () => async (dispatch) => {
     dispatch({
       type: "FETCH_PICTURES",
       payload: pictureArray,
+    });
+
+    dispatch({
+      type: "IS_LOADING",
+      payload: "false",
     });
 
     return;
@@ -28,6 +39,12 @@ export const fetchPictures = () => async (dispatch) => {
   dispatch({
     type: "FETCH_PICTURES",
     payload: finalArray,
+  });
+
+  // exit loading state
+  dispatch({
+    type: "IS_LOADING",
+    payload: "false",
   });
 };
 
@@ -54,6 +71,13 @@ export const handleLikeClick = (currentCard, oldList) => {
   return {
     type: "HANDLE_LIKE_CLICK",
     payload: newPictureList,
+  };
+};
+
+export const changeLoading = () => {
+  return {
+    type: "IS_LOADING",
+    payload: "false",
   };
 };
 

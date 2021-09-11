@@ -1,0 +1,45 @@
+.skeleton {
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.skeleton-card {
+  width: 100%;
+}
+
+.skeleton-media {
+  height: 450px !important;
+}
+
+@media (max-width: 800px) {
+  .MuiCardContent-root:last-child {
+    padding-bottom: 24px !important;
+  }
+
+  .MuiCardContent-root {
+    padding: 16px !important;
+  }
+
+  .skeleton-card {
+    width: 100%;
+  }
+
+  .skeleton-media {
+    height: 400px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .skeleton-media {
+    height: 300px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .skeleton-media {
+    height: 200px !important;
+  }
+}
