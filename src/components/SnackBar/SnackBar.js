@@ -14,9 +14,7 @@ function MyApp({ currentCard }) {
 
   return (
     <React.Fragment>
-      <FileCopy onClick={handleClickVariant("success")}>
-        Show success snackbar
-      </FileCopy>
+      <FileCopy onClick={handleClickVariant("success")}></FileCopy>
     </React.Fragment>
   );
 }

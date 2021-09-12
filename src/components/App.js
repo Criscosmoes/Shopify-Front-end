@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import NavBar from "../components/NavBar/NavBar";
 import PictureList from "../components/PictureList/PictureList";
 import DatePicker from "./DatePicker/DatePicker";
+import Settings from "../components/Settings/Settings";
 import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import "../App.scss";
@@ -48,6 +49,9 @@ const App = ({
           ) : (
             <PictureList list={byDate} />
           )}
+        </Route>
+        <Route path="/settings">
+          <Settings />
         </Route>
       </Switch>
     </div>

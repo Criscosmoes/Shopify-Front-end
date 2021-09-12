@@ -13,6 +13,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import DateRangeIcon from "@material-ui/icons/DateRange";
+import SettingsIcon from "@material-ui/icons/Settings";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -23,6 +24,12 @@ const useStyles = makeStyles({
     width: "auto",
   },
 });
+
+const hashMap = {
+  Home: <HomeIcon />,
+  "Search By Date": <DateRangeIcon />,
+  Settings: <SettingsIcon />,
+};
 
 export default function TemporaryDrawer() {
   const classes = useStyles();
@@ -54,7 +61,7 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Home", "Search By Date"].map((text, index) => {
+        {["Home", "Search By Date", "Settings"].map((text, index) => {
           const trimmed = text.replace(/\s/g, "");
           let pathname = trimmed.toLowerCase();
 
@@ -65,9 +72,7 @@ export default function TemporaryDrawer() {
           return (
             <Link to={"/" + pathname}>
               <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <HomeIcon /> : <DateRangeIcon />}
-                </ListItemIcon>
+                <ListItemIcon>{hashMap[text]}</ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             </Link>
