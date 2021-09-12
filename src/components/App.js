@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import NavBar from "../components/NavBar/NavBar";
 import PictureList from "../components/PictureList/PictureList";
+import DatePicker from "./DatePicker/DatePicker";
 import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import "../App.scss";
@@ -33,7 +34,14 @@ const App = ({ pictureList, fetchPictures, byDate, setPictureToState }) => {
           <PictureList list={pictureList} />
         </Route>
         <Route path="/searchbydate">
-          <PictureList list={byDate} />
+          {byDate.length === 0 ? (
+            <div className="error">
+              <h2>Please choose a date to fetch from.</h2>
+              <DatePicker />
+            </div>
+          ) : (
+            <PictureList list={byDate} />
+          )}
         </Route>
       </Switch>
     </div>

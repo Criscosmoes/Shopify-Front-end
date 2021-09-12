@@ -143,11 +143,33 @@ a {
 
 body {
   font-size: 1.6rem;
+  background: #f5f5f5;
 }
 
 // my styles
 
 .main-container {
-  background: #f5f5f5;
   height: 100%;
 }
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.error > * {
+  margin: 3%;
+}
+
+@media (max-width: 500px) {
+  .error > * {
+    margin: 5%;
+  }
+}
+
+/* * {
+  border: 2px solid gray;
+}
+ */

@@ -10,6 +10,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import DatePicker from "../DatePicker/DatePicker";
 import Drawer from "../Drawer/Drawer";
 import "./_navbar.scss";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,7 +83,7 @@ export default function SearchAppBar() {
             <Drawer />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            SpaceStagram
+            <Link to="/">SpaceStagram</Link>
           </Typography>
           <DatePicker />
         </Toolbar>
