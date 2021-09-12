@@ -34,7 +34,9 @@ function MaterialUIPickers({ fetchPictureByDate }) {
     // here is where we redirect the user
     fetchPictureByDate(formatDate(date));
 
-    history.push("/searchbydate");
+    setTimeout(() => {
+      history.push("/searchbydate");
+    }, 1500);
   };
 
   return (

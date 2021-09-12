@@ -7,7 +7,13 @@ import { connect } from "react-redux";
 import "../App.scss";
 import { fetchPictures, setPictureToState } from "./../store/actions/index";
 
-const App = ({ pictureList, fetchPictures, byDate, setPictureToState }) => {
+const App = ({
+  pictureList,
+  fetchPictures,
+  byDate,
+  setPictureToState,
+  isLoading,
+}) => {
   // check if there is a picture in local storage for by date array
   const checkLocalStorage = () => {
     const check = localStorage.getItem("byDate");
@@ -52,6 +58,7 @@ const mapStateToProps = (state) => {
   return {
     pictureList: state.pictureList,
     byDate: state.byDate,
+    isLoading: state.isLoading,
   };
 };
 
