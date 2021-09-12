@@ -2,18 +2,39 @@ import "date-fns";
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
+import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchPictureByDate } from "./../../store/actions/index";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 
-export default function MaterialUIPickers() {
+function MaterialUIPickers({ fetchPictureByDate }) {
   // The first commit of Material-UI
   const [selectedDate, setSelectedDate] = React.useState(new Date());
+  let history = useHistory();
+
+  function formatDate(date) {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day || "32"].join("-");
+  }
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+
+    // here is where we redirect the user
+    fetchPictureByDate(formatDate(date));
+
+    history.push("/searchbydate");
   };
 
   return (
@@ -37,3 +58,11 @@ export default function MaterialUIPickers() {
     </MuiPickersUtilsProvider>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {};
+};
+
+export default connect(mapStateToProps, { fetchPictureByDate })(
+  MaterialUIPickers
+);

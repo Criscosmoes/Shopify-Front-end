@@ -10,8 +10,10 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-import { IconButton } from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import HomeIcon from "@material-ui/icons/Home";
+import DateRangeIcon from "@material-ui/icons/DateRange";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   list: {
@@ -52,26 +54,29 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        {["Home", "Search By Date"].map((text, index) => {
+          const trimmed = text.replace(/\s/g, "");
+          let pathname = trimmed.toLowerCase();
+
+          console.log(pathname);
+
+          if (pathname === "home") {
+            pathname = "";
+          }
+
+          return (
+            <Link to={"/" + pathname}>
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <HomeIcon /> : <DateRangeIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            </Link>
+          );
+        })}
       </List>
       <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
     </div>
   );
 

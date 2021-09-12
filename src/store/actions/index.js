@@ -49,9 +49,9 @@ export const fetchPictures = () => async (dispatch) => {
 };
 
 export const handleLikeClick = (currentCard, oldList) => {
-  console.log("hi");
-
   const { date } = currentCard;
+
+  let listName = oldList.length < 5 ? "byDate" : "pictureList";
 
   const newPictureList = oldList.map((cur) => {
     if (cur.date === date) {
@@ -62,15 +62,43 @@ export const handleLikeClick = (currentCard, oldList) => {
     } else return cur;
   });
 
-  console.log(newPictureList);
-
   // update localstorage list and state
-
-  localStorage.setItem("pictureList", JSON.stringify(newPictureList));
+  localStorage.setItem(listName, JSON.stringify(newPictureList));
 
   return {
     type: "HANDLE_LIKE_CLICK",
-    payload: newPictureList,
+    payload: {
+      name: listName,
+      array: newPictureList,
+    },
+  };
+};
+
+export const fetchPictureByDate = (date) => async (dispatch) => {
+  const res = await fetch(
+    `https://api.nasa.gov/planetary/apod?api_key=twjJbHAQRzxN7Tug2CDcROEh4JgBNPTQMkpRTlQ8&date=${date}`
+  );
+  const json = await res.json();
+
+  const array = [json];
+
+  const finalArray = addLikedField(array);
+
+  console.log(finalArray);
+
+  // set picture to local storage
+  localStorage.setItem("byDate", JSON.stringify(finalArray));
+
+  dispatch({
+    type: "FETCH_BY_DATE",
+    payload: finalArray,
+  });
+};
+
+export const setPictureToState = (picture) => {
+  return {
+    type: "PICTURE_TO_STATE",
+    payload: [picture],
   };
 };
 

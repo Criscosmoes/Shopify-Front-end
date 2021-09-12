@@ -2,8 +2,49 @@ import React, { useEffect, useState } from "react";
 import "./_picturelist.scss";
 import Card from "../Card/Card";
 import { connect } from "react-redux";
-import { fetchPictures } from "../../store/actions";
 import Loading from "../Loading/Loading";
+
+const PictureList = ({ list, isLoading }) => {
+  const renderedPictures = list.map((cur) => {
+    return (
+      <li className="card">
+        <Card
+          key={cur.date}
+          date={cur.date}
+          author={cur.copyright}
+          description={cur.explanation}
+          image={cur.url}
+          title={cur.title}
+          cur={cur}
+        />
+      </li>
+    );
+  });
+
+  const loadingComponents = Array.from(Array(list.length).keys()).map(
+    (cur, i) => {
+      return <Loading />;
+    }
+  );
+
+  return (
+    <div className="list-container">
+      <ul className="card-container">
+        {isLoading ? loadingComponents : renderedPictures}
+      </ul>
+    </div>
+  );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.isLoading,
+  };
+};
+
+export default connect(mapStateToProps, {})(PictureList);
+
+/* 
 
 const PictureList = ({ pictureList, fetchPictures, isLoading }) => {
   const renderedPictures = pictureList.map((cur) => {
@@ -51,3 +92,7 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   fetchPictures,
 })(PictureList);
+
+
+
+*/

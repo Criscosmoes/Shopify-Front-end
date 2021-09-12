@@ -17,6 +17,7 @@ import { connect } from "react-redux";
 import { handleLikeClick } from "../../store/actions";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 import SnackBar from "../SnackBar/SnackBar";
+import { useLocation } from "react-router-dom";
 
 import "./_card.scss";
 
@@ -57,23 +58,29 @@ const RecipeReviewCard = ({
   image,
   title,
   cur,
+  byDate,
 }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const event = new Date(date);
-  console.log(event.toDateString());
+  /*  console.log(
+    new Date(event.setDate(event.getDate() + 1)).toLocaleDateString("en-US")
+  ); */
+  const location = useLocation();
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   const onLikeClick = (currentCard, oldList) => {
+    console.log(currentCard, oldList);
+
+    if (location.pathname === "/searchbydate") {
+      oldList = byDate;
+    }
+
     handleLikeClick(currentCard, oldList);
   };
-
-  /* onClick={() => {
-    navigator.clipboard.writeText(cur.url);
-  }} */
 
   return (
     <Card className="card">
@@ -125,6 +132,7 @@ const RecipeReviewCard = ({
 const mapStateToProps = (state) => {
   return {
     pictureList: state.pictureList,
+    byDate: state.byDate,
   };
 };
 
