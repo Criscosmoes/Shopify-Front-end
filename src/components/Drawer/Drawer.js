@@ -58,8 +58,6 @@ export default function TemporaryDrawer() {
           const trimmed = text.replace(/\s/g, "");
           let pathname = trimmed.toLowerCase();
 
-          console.log(pathname);
-
           if (pathname === "home") {
             pathname = "";
           }

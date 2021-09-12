@@ -25,11 +25,14 @@ function MaterialUIPickers({ fetchPictureByDate }) {
     if (month.length < 2) month = "0" + month;
     if (day.length < 2) day = "0" + day;
 
-    return [year, month, day || "32"].join("-");
+    return [year, month, day].join("-");
   }
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+
+    /*   console.log(date);
+    console.log(formatDate(date)); */
 
     // here is where we redirect the user
     fetchPictureByDate(formatDate(date));

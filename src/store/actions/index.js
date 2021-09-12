@@ -23,16 +23,21 @@ export const fetchPictures = () => async (dispatch) => {
     return;
   }
 
+  // get past 7 days to yyyy-mm-dd - yyyy-mm-dd
+  const { past, today } = getLastWeekDates();
+
+  console.log(past, today);
+
   // ajax call
 
   setTimeout(async () => {
     const res = await fetch(
-      "https://api.nasa.gov/planetary/apod?api_key=twjJbHAQRzxN7Tug2CDcROEh4JgBNPTQMkpRTlQ8&start_date=2020-01-03&end_date=2020-01-13"
+      `https://api.nasa.gov/planetary/apod?api_key=twjJbHAQRzxN7Tug2CDcROEh4JgBNPTQMkpRTlQ8&start_date=${past}&end_date=${today}`
     );
     const json = await res.json();
 
     // add a "liked" field to each picture item
-    const finalArray = addLikedField(json);
+    const finalArray = addLikedField(json).reverse();
 
     //set to local storage
     localStorage.setItem("pictureList", JSON.stringify(finalArray));
@@ -92,8 +97,6 @@ export const fetchPictureByDate = (date) => async (dispatch) => {
 
     const finalArray = addLikedField(array);
 
-    console.log(finalArray);
-
     // set picture to local storage
     localStorage.setItem("byDate", JSON.stringify(finalArray));
 
@@ -133,4 +136,35 @@ const addLikedField = (array) => {
   });
 
   return finalArray;
+};
+
+const getLastWeekDates = () => {
+  const dates = [...Array(7)].map((_, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    return d;
+  });
+
+  function formatDate(date) {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  }
+
+  let pastTemp = dates[dates.length - 1];
+  let todayTemp = dates[0];
+
+  let past = formatDate(pastTemp);
+  let today = formatDate(todayTemp);
+
+  return {
+    past,
+    today,
+  };
 };

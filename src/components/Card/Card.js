@@ -63,10 +63,11 @@ const RecipeReviewCard = ({
 }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const event = new Date(date);
-  /*  console.log(
-    new Date(event.setDate(event.getDate() + 1)).toLocaleDateString("en-US")
-  ); */
+
+  // set correct date
+  const event = date.split("-");
+  const finalDate = new Date(event[0], event[1] - 1, event[2]);
+
   const location = useLocation();
 
   const handleExpandClick = () => {
@@ -74,8 +75,6 @@ const RecipeReviewCard = ({
   };
 
   const onLikeClick = (currentCard, oldList) => {
-    console.log(currentCard, oldList);
-
     if (location.pathname === "/searchbydate") {
       oldList = byDate;
     }
@@ -92,7 +91,7 @@ const RecipeReviewCard = ({
           </Avatar>
         }
         title={<h2 className={classes.title}>{title}</h2>}
-        subheader={event.toDateString()}
+        subheader={finalDate.toDateString()}
       />
       {mediaType === "image" ? (
         <CardMedia className={classes.media} image={image} title={title} />
