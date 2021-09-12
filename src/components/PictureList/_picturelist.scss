@@ -11,6 +11,7 @@
   align-items: center;
   flex-direction: column;
   width: 55%;
+  margin-bottom: 4.2%;
 }
 
 .card-container > * {
@@ -32,9 +33,9 @@
   margin: 1% !important;
 }
 
-.MuiCardContent-root {
+/* .MuiCardContent-root {
   padding: unset !important;
-}
+} */
 
 // animations
 
@@ -93,7 +94,3 @@ li {
     height: 320px !important;
   }
 }
-
-/* * {
-  border: 2px solid gray;
-} */

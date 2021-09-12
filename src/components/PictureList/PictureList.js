@@ -22,11 +22,9 @@ const PictureList = ({ list, isLoading }) => {
     );
   });
 
-  const loadingComponents = Array.from(Array(list.length).keys()).map(
-    (cur, i) => {
-      return <Loading />;
-    }
-  );
+  const loadingComponents = [1, 2, 3, 4, 5].map((cur, i) => {
+    return <Loading />;
+  });
 
   return (
     <div className="list-container">

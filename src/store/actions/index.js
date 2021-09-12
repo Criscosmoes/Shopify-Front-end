@@ -25,27 +25,29 @@ export const fetchPictures = () => async (dispatch) => {
 
   // ajax call
 
-  const res = await fetch(
-    "https://api.nasa.gov/planetary/apod?api_key=twjJbHAQRzxN7Tug2CDcROEh4JgBNPTQMkpRTlQ8&start_date=2020-01-03&end_date=2020-01-13"
-  );
-  const json = await res.json();
+  setTimeout(async () => {
+    const res = await fetch(
+      "https://api.nasa.gov/planetary/apod?api_key=twjJbHAQRzxN7Tug2CDcROEh4JgBNPTQMkpRTlQ8&start_date=2020-01-03&end_date=2020-01-13"
+    );
+    const json = await res.json();
 
-  // add a "liked" field to each picture item
-  const finalArray = addLikedField(json);
+    // add a "liked" field to each picture item
+    const finalArray = addLikedField(json);
 
-  //set to local storage
-  localStorage.setItem("pictureList", JSON.stringify(finalArray));
+    //set to local storage
+    localStorage.setItem("pictureList", JSON.stringify(finalArray));
 
-  dispatch({
-    type: "FETCH_PICTURES",
-    payload: finalArray,
-  });
+    dispatch({
+      type: "FETCH_PICTURES",
+      payload: finalArray,
+    });
 
-  // exit loading state
-  dispatch({
-    type: "IS_LOADING",
-    payload: "false",
-  });
+    // exit loading state
+    dispatch({
+      type: "IS_LOADING",
+      payload: "false",
+    });
+  }, 1500);
 };
 
 export const handleLikeClick = (currentCard, oldList) => {
@@ -75,24 +77,36 @@ export const handleLikeClick = (currentCard, oldList) => {
 };
 
 export const fetchPictureByDate = (date) => async (dispatch) => {
-  const res = await fetch(
-    `https://api.nasa.gov/planetary/apod?api_key=twjJbHAQRzxN7Tug2CDcROEh4JgBNPTQMkpRTlQ8&date=${date}`
-  );
-  const json = await res.json();
-
-  const array = [json];
-
-  const finalArray = addLikedField(array);
-
-  console.log(finalArray);
-
-  // set picture to local storage
-  localStorage.setItem("byDate", JSON.stringify(finalArray));
-
   dispatch({
-    type: "FETCH_BY_DATE",
-    payload: finalArray,
+    type: "IS_LOADING",
+    payload: "false",
   });
+
+  setTimeout(async () => {
+    const res = await fetch(
+      `https://api.nasa.gov/planetary/apod?api_key=twjJbHAQRzxN7Tug2CDcROEh4JgBNPTQMkpRTlQ8&date=${date}`
+    );
+    const json = await res.json();
+
+    const array = [json];
+
+    const finalArray = addLikedField(array);
+
+    console.log(finalArray);
+
+    // set picture to local storage
+    localStorage.setItem("byDate", JSON.stringify(finalArray));
+
+    dispatch({
+      type: "FETCH_BY_DATE",
+      payload: finalArray,
+    });
+
+    dispatch({
+      type: "IS_LOADING",
+      payload: "false",
+    });
+  }, 1000);
 };
 
 export const setPictureToState = (picture) => {
