@@ -5,3 +5,14 @@
 .MuiSvgIcon-root {
   padding: unset !important;
 }
+
+.iframe-container {
+  width: 100%;
+  height: 550px;
+}
+
+@media (max-width: 800px) {
+  .iframe-container {
+    height: 400px;
+  }
+}

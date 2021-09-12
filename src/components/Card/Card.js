@@ -59,6 +59,7 @@ const RecipeReviewCard = ({
   title,
   cur,
   byDate,
+  mediaType,
 }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -93,7 +94,15 @@ const RecipeReviewCard = ({
         title={<h2 className={classes.title}>{title}</h2>}
         subheader={event.toDateString()}
       />
-      <CardMedia className={classes.media} image={image} title={title} />
+      {mediaType === "image" ? (
+        <CardMedia className={classes.media} image={image} title={title} />
+      ) : (
+        <iframe
+          className="iframe-container"
+          src={image + "&rel=0"}
+          allowfullscreen
+        ></iframe>
+      )}
       <CardContent></CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" title="like">

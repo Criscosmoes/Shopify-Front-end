@@ -16,6 +16,7 @@ const PictureList = ({ list, isLoading }) => {
           image={cur.url}
           title={cur.title}
           cur={cur}
+          mediaType={cur.media_type}
         />
       </li>
     );
