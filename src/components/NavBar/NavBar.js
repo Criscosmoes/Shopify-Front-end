@@ -83,7 +83,7 @@ export default function SearchAppBar() {
             <Drawer />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            <Link to="/">SpaceStagram</Link>
+            <Link to="/">Spacestagram</Link>
           </Typography>
           <DatePicker />
         </Toolbar>

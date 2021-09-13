@@ -12,8 +12,7 @@ function MyApp() {
     enqueueSnackbar("Cache was cleared!", { variant });
     localStorage.clear();
     history.push("/");
-    window.location.reload();
-    return false;
+    history.go(0);
   };
 
   return (
