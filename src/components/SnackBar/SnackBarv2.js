@@ -13,6 +13,7 @@ function MyApp() {
     /* localStorage.clear();
     history.push("/");
     history.go(0); */
+    // test push
   };
 
   return (
