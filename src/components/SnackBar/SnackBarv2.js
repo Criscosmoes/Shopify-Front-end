@@ -10,9 +10,9 @@ function MyApp() {
   const handleClickVariant = (variant) => () => {
     // variant could be success, error, warning, info, or default
     enqueueSnackbar("Cache was cleared!", { variant });
-    /* localStorage.clear();
+    localStorage.clear();
     history.push("/");
-    history.go(0); */
+    history.go(0);
     // test push
   };
 
