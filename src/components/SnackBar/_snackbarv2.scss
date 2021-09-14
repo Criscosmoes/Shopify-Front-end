@@ -1,0 +1,35 @@
+.cache-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  cursor: pointer;
+}
+
+.cache-button h2 {
+  font-size: 1.8rem;
+}
+
+.delete-icon {
+  font-size: 3rem !important;
+}
+
+@media (max-width: 1500px) {
+  .cache-button {
+    width: 30%;
+  }
+
+  .cache-button h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .cache-button {
+    width: 70%;
+  }
+
+  .cache-button h2 {
+    font-size: 1.4rem;
+  }
+}

@@ -104,9 +104,12 @@ const RecipeReviewCard = ({
       )}
       <CardContent></CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" title="like">
+        <IconButton
+          aria-label="add to favorites"
+          title="like"
+          onClick={() => onLikeClick(cur, pictureList)}
+        >
           <FavoriteIcon
-            onClick={() => onLikeClick(cur, pictureList)}
             style={{
               color: `${cur.liked ? "red" : "rgba(0, 0, 0, 0.54)"}`,
             }}

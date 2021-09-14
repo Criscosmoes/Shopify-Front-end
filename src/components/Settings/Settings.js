@@ -6,10 +6,7 @@ const Settings = () => {
   return (
     <div className="settings-container">
       <h2>This will clear local storage data</h2>
-      <button className="clear-btn">
-        <SnackBar className="trash-icon" />
-        <h2>Clear Cache</h2>
-      </button>
+      <SnackBar className="trash-icon">Clear Cache</SnackBar>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useHistory } from "react-router-dom";
+import "./_snackbarv2.scss";
 
 function MyApp() {
   const { enqueueSnackbar } = useSnackbar();
@@ -13,13 +14,13 @@ function MyApp() {
     localStorage.clear();
     history.push("/");
     history.go(0);
-    // test push
   };
 
   return (
-    <React.Fragment>
-      <DeleteIcon onClick={handleClickVariant("success")}></DeleteIcon>
-    </React.Fragment>
+    <button className="cache-button" onClick={handleClickVariant("success")}>
+      <DeleteIcon className="delete-icon" />
+      <h2>Clear cache</h2>
+    </button>
   );
 }
 
