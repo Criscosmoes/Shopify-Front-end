@@ -109,7 +109,7 @@ export const fetchPictureByDate = (date) => async (dispatch) => {
       type: "IS_LOADING",
       payload: "false",
     });
-  }, 1000);
+  }, 1500);
 };
 
 export const setPictureToState = (picture) => {
