@@ -1,4 +1,4 @@
-# Shopify Frontend Internship Challenge 2021
+# Shopify Frontend Internship Challenge 2022 Winter
 
 - [**Challenge App**](https://shopify-front-end.vercel.app/)
 - [**Challenge Requirements**](https://docs.google.com/document/d/1QlC6htA5SXEl3YruAOkJWj2-0W3w-n0UOzGuJ1EcktQ/edit#)
