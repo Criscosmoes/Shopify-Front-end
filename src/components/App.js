@@ -6,7 +6,11 @@ import Settings from "../components/Settings/Settings";
 import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import "../App.scss";
-import { fetchPictures, setPictureToState } from "./../store/actions/index";
+import {
+  fetchPictures,
+  setPictureToState,
+  checkLastPicture,
+} from "./../store/actions/index";
 
 const App = ({
   pictureList,
@@ -14,6 +18,7 @@ const App = ({
   byDate,
   setPictureToState,
   isLoading,
+  checkLastPicture,
 }) => {
   // check if there is a picture in local storage for by date array
   const checkLocalStorage = () => {
@@ -31,6 +36,7 @@ const App = ({
   useEffect(() => {
     fetchPictures();
     checkLocalStorage();
+    checkLastPicture();
   }, []);
 
   return (
@@ -66,6 +72,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchPictures, setPictureToState })(
-  App
-);
+export default connect(mapStateToProps, {
+  fetchPictures,
+  setPictureToState,
+  checkLastPicture,
+})(App);

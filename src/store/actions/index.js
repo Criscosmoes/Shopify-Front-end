@@ -126,6 +126,23 @@ export const changeLoading = () => {
   };
 };
 
+export const checkLastPicture = () => {
+  const pictureArray = JSON.parse(localStorage.getItem("pictureList"));
+  const todaysDate = formatDate(new Date()); // yyyy-mm=dd
+
+  if (!pictureArray || todaysDate !== pictureArray[0].date) {
+    // means that we don't have an updated list
+    fetchPictures();
+  } else {
+    // our list is updated, nothing to do.
+  }
+
+  return {
+    type: "TEST",
+    payload: "false",
+  };
+};
+
 // helper functions
 const addLikedField = (array) => {
   const finalArray = array.map((cur) => {
@@ -138,24 +155,24 @@ const addLikedField = (array) => {
   return finalArray;
 };
 
+function formatDate(date) {
+  var d = new Date(date),
+    month = "" + (d.getMonth() + 1),
+    day = "" + d.getDate(),
+    year = d.getFullYear();
+
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [year, month, day].join("-");
+}
+
 const getLastWeekDates = () => {
   const dates = [...Array(7)].map((_, i) => {
     const d = new Date();
     d.setDate(d.getDate() - i);
     return d;
   });
-
-  function formatDate(date) {
-    var d = new Date(date),
-      month = "" + (d.getMonth() + 1),
-      day = "" + d.getDate(),
-      year = d.getFullYear();
-
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-
-    return [year, month, day].join("-");
-  }
 
   let pastTemp = dates[dates.length - 1];
   let todayTemp = dates[0];
