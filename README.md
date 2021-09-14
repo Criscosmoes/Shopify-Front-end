@@ -1,7 +1,7 @@
 # Shopify Frontend Internship Challenge 2021
 
 - [**Challenge App**](https://shopify-front-end.vercel.app/)
-- [**Challenge Requirements**](https://shopify-front-end.vercel.app/)
+- [**Challenge Requirements**](https://docs.google.com/document/d/1QlC6htA5SXEl3YruAOkJWj2-0W3w-n0UOzGuJ1EcktQ/edit#)
 
 ## Features
 
@@ -21,7 +21,7 @@ The user can:
 - Used Material UI for well-tested/accessible/reliable components
 - Used React.js for it's simplicity, lightweightness, and versatility
 - Used Semantic HTML tags for improved accessability, making our app accessible to everyone
-- Used media queries to ensure my site look awesome/accessible on EVERY screen size
+- Used media queries to ensure my site looks awesome/accessible on EVERY screen size
 - Score for Lighthouse on Chrome console: 99 Performance, 100 Accessibility, 100 Best Practices, 100 SEO
 
 ## Tech used
