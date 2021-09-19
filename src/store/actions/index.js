@@ -1,3 +1,6 @@
+import { KEYS } from "../../keys";
+console.log(KEYS.NASA_API);
+
 export const fetchPictures = () => async (dispatch) => {
   // enter loading state
   dispatch({
@@ -32,7 +35,7 @@ export const fetchPictures = () => async (dispatch) => {
 
   setTimeout(async () => {
     const res = await fetch(
-      `https://api.nasa.gov/planetary/apod?api_key=twjJbHAQRzxN7Tug2CDcROEh4JgBNPTQMkpRTlQ8&start_date=${past}&end_date=${today}`
+      `https://api.nasa.gov/planetary/apod?api_key=${KEYS.NASA_API}&start_date=${past}&end_date=${today}`
     );
     const json = await res.json();
 
@@ -89,7 +92,7 @@ export const fetchPictureByDate = (date) => async (dispatch) => {
 
   setTimeout(async () => {
     const res = await fetch(
-      `https://api.nasa.gov/planetary/apod?api_key=twjJbHAQRzxN7Tug2CDcROEh4JgBNPTQMkpRTlQ8&date=${date}`
+      `https://api.nasa.gov/planetary/apod?api_key=${KEYS.NASA_API}&date=${date}`
     );
     const json = await res.json();
 
